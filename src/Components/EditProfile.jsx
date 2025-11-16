@@ -8,6 +8,7 @@ import { addUser } from "../utils/userSlice";
 
 const EditProfile = () => {
   const user = useSelector((store) => store.user);
+
   const [formData, setFormData] = useState({
     FirstName: user?.FirstName || "",
     LastName: user?.LastName || "",
@@ -26,15 +27,25 @@ const EditProfile = () => {
 
   const handleSave = async () => {
     try {
-      const res = await axios.put(`${BASE_URL}/profile/edit`, formData, {
+      // Convert skills string ("java, python") → ["java", "python"]
+      const payload = {
+        ...formData,
+        Skills: formData.Skills
+          ? formData.Skills.split(",").map((s) => s.trim())
+          : [],
+      };
+
+      const res = await axios.put(`${BASE_URL}/profile/edit`, payload, {
         withCredentials: true,
       });
 
-      // FIX: Correct user update
-      dispatch(addUser(res.data.data));
+      // Update Redux user correctly
+      dispatch(addUser({ ...res.data.data }));
 
       alert(res.data.message);
-      navigate("/profile");
+
+      // Force profile page refresh with updated data
+      navigate("/profile", { replace: true });
     } catch (error) {
       console.log("Profile update error:", error);
       alert(error?.response?.data || "Something went wrong");
