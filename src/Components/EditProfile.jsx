@@ -29,10 +29,15 @@ const EditProfile = () => {
       const res = await axios.put(`${BASE_URL}/profile/edit`, formData, {
         withCredentials: true,
       });
-      dispatch(addUser(res.data));
+
+      // FIX: Correct user update
+      dispatch(addUser(res.data.data));
+
+      alert(res.data.message);
       navigate("/profile");
     } catch (error) {
       console.log("Profile update error:", error);
+      alert(error?.response?.data || "Something went wrong");
     }
   };
 
@@ -52,6 +57,7 @@ const EditProfile = () => {
             />
           </div>
         ))}
+
         <button onClick={handleSave} className="btn btn-primary w-full mt-3">
           Save Changes
         </button>
