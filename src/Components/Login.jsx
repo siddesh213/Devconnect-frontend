@@ -49,10 +49,9 @@ const Login = () => {
 
       console.log("✅ Login response:", res.data);
 
-      // ✅ FIX — backend sends user object directly
       if (res.data && res.data._id) {
-        dispatch(addUser(res.data));
-        navigate("/feed"); // ✅ correct route
+        dispatch(addUser(res.data)); // store user in redux
+        navigate("/feed"); // only login should go to feed
       } else {
         setError("Login successful but no user data received.");
       }
@@ -82,8 +81,10 @@ const Login = () => {
       );
 
       console.log("✅ Signup response:", res.data);
-      dispatch(addUser(res.data)); // ✅ direct user object
-      navigate("/feed");
+
+      // ❗ Do NOT add user to Redux on signup
+      alert("Signup successful, please login");
+      navigate("/login"); // redirect to login page
     } catch (err) {
       console.error("❌ Signup error:", err);
       setError(err?.response?.data || "Signup failed");
