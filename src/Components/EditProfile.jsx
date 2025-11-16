@@ -27,7 +27,6 @@ const EditProfile = () => {
 
   const handleSave = async () => {
     try {
-      // Convert skills string ("java, python") → ["java", "python"]
       const payload = {
         ...formData,
         Skills: formData.Skills
@@ -42,9 +41,10 @@ const EditProfile = () => {
       // Update Redux user correctly
       dispatch(addUser({ ...res.data.data }));
 
-      alert(res.data.message);
+      // 🔥 Sync updated user to localStorage (so UI loads correct data after refresh)
+      localStorage.setItem("user", JSON.stringify(res.data.data));
 
-      // Force profile page refresh with updated data
+      alert(res.data.message);
       navigate("/profile", { replace: true });
     } catch (error) {
       console.log("Profile update error:", error);
