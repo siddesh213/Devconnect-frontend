@@ -48,7 +48,7 @@ npm run dev
 
 ## 🔧 API Endpoints
 
-The frontend interacts with the backend API hosted in the [devTinder-backend](https://github.com/siddesh213/Devconnect-backend). Ensure the backend is running before using the frontend.
+The frontend interacts with the backend API hosted in the [devconnect-backend](https://github.com/siddesh213/Devconnect-backend). Ensure the backend is running before using the frontend.
 
 ## 🚀 Deployment
 
