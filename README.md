@@ -9,7 +9,7 @@
 
 -  **Frontend:** React.js, Vite, Redux Toolkit, Tailwind CSS
 -  **State Management:** Redux Toolkit
--  **Backend:** [Devconnect Backend](https://github.com/siddesh213/Devconnect-backend)
+-  **Backend:** [Repository Link)](https://github.com/siddesh213/Devconnect-backend)
 -  **Authentication:** JWT
 -  **Database:** MongoDB (via backend)
 
