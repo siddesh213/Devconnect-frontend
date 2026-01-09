@@ -49,15 +49,3 @@ npm run dev
 ## 🔧 API Endpoints
 
 The frontend interacts with the backend API hosted in the [devconnect-backend](https://github.com/siddesh213/Devconnect-backend). Ensure the backend is running before using the frontend.
-
-## 🚀 Deployment
-
-Will Soon deploy on AWS EC2 instance.
-
-## 📜 License
-
-This project is open-source and available under the MIT License.
-
-## 🤝 Contribution
-
-Contributions are welcome! Feel free to fork the repo and submit a pull request.
