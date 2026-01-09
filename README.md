@@ -17,7 +17,7 @@
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/your-username/Devconnect-frontend.git
+https://github.com/siddesh213/Devconnect-frontend.git
 ```
 
 2. Navigate to the project directory:
