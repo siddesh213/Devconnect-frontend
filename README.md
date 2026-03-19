@@ -1,4 +1,4 @@
-# 💼 DevTinder - Connect with Developer Talent
+# 💼 DevConnector  - Connect with Developer Talent
 
 <div align="center">
 
