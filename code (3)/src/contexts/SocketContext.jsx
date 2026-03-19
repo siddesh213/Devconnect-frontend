@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // ✅ Production-ready socket configuration
-    const socketURL = BASE_URL || "http://localhost:3001";
+    const socketURL = BASE_URL || "https://devconnect-bacckend-1ive-1.onrender.com";
     
     console.log(`🔌 Connecting to WebSocket at: ${socketURL}`);
 

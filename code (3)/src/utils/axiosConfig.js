@@ -3,7 +3,7 @@ import { API_BASE_URL } from "./constants";
 
 // ✅ Create axios instance with proper configuration
 const api = axios.create({
-  baseURL: API_BASE_URL || "http://localhost:3001",
+  baseURL: API_BASE_URL || "https://devconnect-bacckend-1ive-1.onrender.com",
   timeout: 10000,
   withCredentials: true, // Important for sending cookies with requests
   headers: {
