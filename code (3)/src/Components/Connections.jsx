@@ -4,9 +4,11 @@ import axios from "axios";
 import { API_BASE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { UserRound, Code } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Chat from "./Chat";
 
 const Connections = () => {
+  const navigate = useNavigate();
   const [connections, setConnections] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null); // For chat
@@ -121,7 +123,10 @@ const Connections = () => {
                 >
                   💬 Message
                 </button>
-                <button className="btn btn-sm btn-outline text-slate-300 hover:bg-slate-800 border-slate-600">
+                <button 
+                  onClick={() => navigate(`/profile/${_id}`)}
+                  className="btn btn-sm btn-outline text-slate-300 hover:bg-slate-800 border-slate-600"
+                >
                   View Profile
                 </button>
               </div>

@@ -27,6 +27,14 @@ const Requests = () => {
       dispatch(removeRequest(senderId));
       setToastMsg(`✅ Request ${status} successfully!`);
       setTimeout(() => setToastMsg(""), 3000);
+      
+      // If accepted, notify user to view connections
+      if (status === "accepted") {
+        setTimeout(() => {
+          setToastMsg("ℹ️ Check your Connections page to view their full profile!");
+          setTimeout(() => setToastMsg(""), 3000);
+        }, 1500);
+      }
     } catch (error) {
       console.error("❌ Review Error:", error.response?.data || error.message);
       

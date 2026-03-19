@@ -3,6 +3,7 @@ const ProfileRouter=express.Router()
 const {UserAuth}=require("../middlwares/auth.js")
 const {ValidateProfileEditData}=require("../utils/validation.js")
 const upload = require("../middlwares/upload.js");
+const { UserModel } = require("../models/user.js");
 
 // NOTE: Remove sensitive fields before sending user back to the client
 const sanitizeUser = (userDoc) => {
@@ -18,6 +19,26 @@ ProfileRouter.get("/profile/view", UserAuth, async (req, res) => {
   } catch (err) {
     console.log(err.message);
     res.status(403).send("Invalid or expired token");
+  }
+});
+
+// ✅ GET another user's profile by ID
+ProfileRouter.get("/user/:userId", UserAuth, async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await UserModel.findById(userId);
+    
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    
+    res.json({ 
+      message: "User profile fetched successfully",
+      data: sanitizeUser(user) 
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ message: "Error fetching user profile" });
   }
 });
 

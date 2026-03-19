@@ -7,6 +7,7 @@ import EditProfile from "./Components/EditProfile";
 import Feed from "./Components/Feed";
 import Connections from "./Components/Connections";
 import Requests from "./Components/Requests";
+import UserProfileView from "./Components/UserProfileView";
 import SocketHandler from "./Components/SocketHandler";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="profile" element={<Profile />} />
           <Route path="profile/edit" element={<EditProfile />} />
+          <Route path="profile/:userId" element={<UserProfileView />} />
           <Route path="connections" element={<Connections />} />
           <Route path="requests" element={<Requests />} />
         </Route>
