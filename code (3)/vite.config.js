@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       "/api": {
-        target: process.env.VITE_API_BASE_URL || "https://devconnect-bacckend-1ive-1.onrender.com",
+        target: process.env.VITE_API_BASE_URL || "https://devconnect-bakend-live.onrender.com",
         changeOrigin: true,
         secure: false,
       },
