@@ -96,16 +96,16 @@ getuserrequest.get("/feed", UserAuth, async (req, res) => {
     if (limit > 20) limit = 10;
     const skip = (page - 1) * limit;
 
-    // ✅ Find all connection requests related to this user
+    // ✅ Find all connection requests related to this user (except rejected/ignored)
     const existingConnections = await ConnectionRequestModel.find({
       $or: [
-        { FromUserId: loggedUser._id },
-        { ToUserid: loggedUser._id },
+        { FromUserId: loggedUser._id, Status: { $in: ["interested", "accepted"] } },
+        { ToUserid: loggedUser._id, Status: { $in: ["interested", "accepted"] } },
       ],
     }).select(["FromUserId", "ToUserid"]);
 
-    // ✅ Collect all IDs to exclude (including self)
-    const excludeIds = [loggedUser._id]; // Use ObjectId directly, not string
+    // ✅ Collect all IDs to exclude (not already approached or already connected)
+    const excludeIds = [loggedUser._id]; // Always exclude self
     existingConnections.forEach((conn) => {
       if (conn.FromUserId && !conn.FromUserId.equals(loggedUser._id)) {
         excludeIds.push(conn.FromUserId);
