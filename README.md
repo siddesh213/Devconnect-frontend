@@ -169,7 +169,7 @@ Chat Component re-renders with new message (auto-scroll)
 
 #### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/DevTinder.git
+git clone https://github.com/yourusername/DevConnector.git
 cd DevTinder
 ```
 
